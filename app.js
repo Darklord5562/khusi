@@ -37,13 +37,13 @@ const provider = new GoogleAuthProvider()
 
 
 
-const Navbar = () => {
+const Navbar = (props) => {
   //const [user, setUser] = useState(null)
   return (
     <div className="Navbar">
         <div>
            <span><b>App</b></span>
-          {user?(<img src={user.photoURL} alt='none'/>):
+          {props.appUser.user?(<img src={props.appUser.user.photoURL} alt='none'/>):
           (<span className='icon'>
             <span className="fa fa-user-alt">
             </span>
