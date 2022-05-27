@@ -43,7 +43,7 @@ const Navbar = () => {
     <div className="Navbar">
         <div>
            <span><b>App</b></span>
-          {user?(<img src={user.profileURL} alt='none'/>):
+          {user?(<img src={user.photoURL} alt='none'/>):
           (<span className='icon'>
             <span className="fa fa-user-alt">
             </span>
