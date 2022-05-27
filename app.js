@@ -38,7 +38,7 @@ const provider = new GoogleAuthProvider()
 
 
 const Navbar = () => {
-  const [user, setUser] = useState(null)
+  //const [user, setUser] = useState(null)
   return (
     <div className="Navbar">
         <div>
@@ -65,8 +65,8 @@ const Signin = (props) => {
       .then((result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken
-        const user = result.user;
-        console.log(user)
+        const cust = result.user;
+        setUser(cust)
       }).catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
