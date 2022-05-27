@@ -1,0 +1,38 @@
+.Navbar{
+  padding: 0 20px;
+  position: fixed;
+  width: 100%;
+}
+
+.Navbar>div{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid hsla(0, 70%, 100%, 1);
+}
+
+.Navbar img{
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+.icon{
+  display: grid;
+  height: 45px;
+  width: 45px;
+  background: hsla(0, 0%, 93%, 1);
+  border-radius: 50%;
+  place-items: center;
+}
+
+
+
+button{
+  padding: 10px 15px;
+  border-radius: 5px;
+  background: hsla(235, 68%, 63%, 1);
+  color: hsla(0, 0%, 95%, 1);
+  outline: none;
+  border: none;
+}

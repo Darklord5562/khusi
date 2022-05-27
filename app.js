@@ -6,10 +6,18 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.8.1/firebase
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'https://www.gstatic.com/firebasejs/9.8.1/firebase-auth.js'
 
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useRouteMatch,
+  useParams
+} from "https://cdnjs.cloudflare.com/ajax/libs/react-router-dom/6.4.0-pre.2/react-router-dom.development.js"
 
 
 
-const firebaseConfig = {
+const config = {
   apiKey: "AIzaSyCzSMq2gb4myy9MW7RZslIEIHCWju-SMPw",
   authDomain: "gitdb-78a7b.firebaseapp.com",
   databaseURL: "https://gitdb-78a7b-default-rtdb.asia-southeast1.firebasedatabase.app",
@@ -21,22 +29,36 @@ const firebaseConfig = {
 };
 
 
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(config);
+
 
 const auth = getAuth()
 const provider = new GoogleAuthProvider()
 
 
 
+const Navbar = () => {
+  return (
+    <div className="Navbar">
+        <div>
+           {/*<span><b>App</b></span>
+           {user?<img src={user.profileUrl}/>:
+           <span className='icon'>
+              <span className="fa fa-user-alt">
+              </span>
+           </span>
+           */}
+        </div>
+      </div>
+  )
+}
 
 
 
 
 
-
-const Signin = () => {
-  const [user, setUser] = useState({});
-  
+const Signin = (props) => {
+  console.log(props.appUser)
   const sign = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
@@ -44,14 +66,12 @@ const Signin = () => {
         const token = credential.accessToken
         const user = result.user;
         console.log(user)
-      })
-      
-      /*.catch((error) => {
+      }).catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         const email = error.customData.email;
         const credential = GoogleAuthProvider.credentialFromError(error);
-      });*/
+      });
   }
   return (
     <div>
@@ -62,11 +82,21 @@ const Signin = () => {
   )
 }
 
+
+
+
+
 const App = () => {
+  const [user, setUser] = useState(null)
+  
   return <div>
-    <Signin/>
+    <Navbar appUser={{user: user, setter:setUser}}/>
+    <Signin appUser={{user: user, setter:setUser}}/>
   </div>
 }
+
+
+
 
 ReactDOM.render(
   <App/>,
