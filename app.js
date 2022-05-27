@@ -38,7 +38,7 @@ const provider = new GoogleAuthProvider()
 
 
 const Navbar = (props) => {
-  console.log(props.stateVar.user)
+  console.log(props.user)
   return (
     <div className="Navbar">
         <div>
@@ -91,7 +91,7 @@ const App = () => {
   const [user, setUser] = useState(null)
 
   return <div>
-    <Navbar stateVar = {{user: user, setter: setUser}}/>
+    <Navbar user = {user}/>
     <Signin stateVar = {{user: user, setter: setUser}}/>
   </div>
 }
