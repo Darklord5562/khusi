@@ -38,12 +38,12 @@ const provider = new GoogleAuthProvider()
 
 
 const Navbar = (props) => {
-  //const [user, setUser] = useState(null)
+  console.log(props.stateVar.user)
   return (
     <div className="Navbar">
         <div>
            <span><b>App</b></span>
-          {props.appUser.user?(<img src={props.appUser.user.photoURL} alt='none'/>):
+          {props.stateVar.user?(<img src={props.stateVar.user.photoURL} alt='none'/>):
           (<span className='icon'>
             <span className="fa fa-user-alt">
             </span>
@@ -59,14 +59,14 @@ const Navbar = (props) => {
 
 
 const Signin = (props) => {
-  console.log(props.appUser)
+  //console.log(props.stateVar.user)
   const sign = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken
         const cust = result.user;
-        setUser(cust)
+        props.stateVar.setUser(cust)
       }).catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
@@ -75,9 +75,9 @@ const Signin = (props) => {
       });
   }
   return (
-    <div>
+    <div style={{paddingTop: '100px'}}>
     <button onClick={sign}>
-      Sign In With Google
+      Sign In
     </button>
   </div>
   )
@@ -91,8 +91,8 @@ const App = () => {
   const [user, setUser] = useState(null)
 
   return <div>
-    <Navbar appUser={{user: user, setter:setUser}}/>
-    <Signin appUser={{user: user, setter:setUser}}/>
+    <Navbar stateVar = {{user: user, setter: setUser}}/>
+    <Signin stateVar = {{user: user, setter: setUser}}/>
   </div>
 }
 
