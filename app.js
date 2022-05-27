@@ -38,16 +38,17 @@ const provider = new GoogleAuthProvider()
 
 
 const Navbar = () => {
+  const [user, setUser] = useState(null)
   return (
     <div className="Navbar">
         <div>
-           {/*<span><b>App</b></span>
-           {user?<img src={user.profileUrl}/>:
-           <span className='icon'>
-              <span className="fa fa-user-alt">
-              </span>
-           </span>
-           */}
+           <span><b>App</b></span>
+          {user?(<img src={user.profileURL} alt='none'/>):
+          (<span className='icon'>
+            <span className="fa fa-user-alt">
+            </span>
+           </span>)
+          }
         </div>
       </div>
   )
@@ -88,7 +89,7 @@ const Signin = (props) => {
 
 const App = () => {
   const [user, setUser] = useState(null)
-  
+
   return <div>
     <Navbar appUser={{user: user, setter:setUser}}/>
     <Signin appUser={{user: user, setter:setUser}}/>
